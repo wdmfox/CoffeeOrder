@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Coffee Orders</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr th:each="coffeeOrder : ${orders}" >
+				<td th:text="${coffeeOrder.id}" />
+				<td th:text="${coffeeOrder.drinkSize}" />
+				<td th:text="${coffeeOrder.blend}" />
+				<td th:text="${coffeeOrder.extras}" />
+				<td><a th:href="@{/edit/{id}(id=${coffeeOrder.id})}">Edit</a><br />
+				<td><a th:href="@{/delete/{id}(id=${coffeeOrder.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+	<a href="../inputOrder">Add A New Coffee Order</a>
+</body>
+</html>

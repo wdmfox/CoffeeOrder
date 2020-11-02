@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add/Update Coffee Order</title>
+</head>
+<body>
+	<form th:object="${newCoffeeOrder}" th:action="@{/update/{id}(id=${newCoffeeOrder.id})}" method='POST'>
+    Size: <input name="drinkSize" size="35" th:field="*{drinkSize}"> <br />
+	Blend: <input name="blend" size="35" th:field="*{blend}"> <br />
+	Extras: <input name="extras" size="35" th:field="*{extras}"> <br />
+	<input name="submit" type="submit" value="submit" />
+	</form>
+	<a href="viewAll">View All Orders</a>
+</body>
+</html>
