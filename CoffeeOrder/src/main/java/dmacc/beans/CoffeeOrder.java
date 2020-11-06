@@ -15,7 +15,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CoffeeOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,62 +30,5 @@ public class CoffeeOrder {
 	private String drinkSize;
 	private String blend;
 	private String extras;
-	
-	// default constructor
-	public CoffeeOrder () {
-		super();
-	}
-	
-	// non-default constructor
-	public CoffeeOrder (long id, String drinkSize, String blend, String extras) {
-		super();
-		this.id = id;
-		this.drinkSize = drinkSize;
-		this.blend = blend;
-		this.extras = extras;
-	}
-
-	
-	// getters and setters
-	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getDrinkSize() {
-		return drinkSize;
-	}
-
-	public void setDrinkSize(String drinkSize) {
-		this.drinkSize = drinkSize;
-	}
-
-	public String getBlend() {
-		return blend;
-	}
-
-	public void setBlend(String blend) {
-		this.blend = blend;
-	}
-
-	public String getExtras() {
-		return extras;
-	}
-
-	public void setExtras(String extras) {
-		this.extras = extras;
-	}
-
-	// toString method returns the coffee order properties in a concatenated string
-	@Override
-	public String toString() {
-		return "CoffeeOrder [id=" + id + ", drinkSize=" + drinkSize + ", blend=" + blend + ", extras=" + extras + "]";
-	}
-	
-	
 	
 }
