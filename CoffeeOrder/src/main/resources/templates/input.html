@@ -2,9 +2,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Add/Update Coffee Order</title>
+<script type = "text/javascript">
+			// checkForm is a javascript function to validate the coffee order form data entry
+		function checkForm() {
+			
+			var cSize = document.forms["cOrder"]["drinkSize"].value.toLowerCase();
+			var cBlend = document.forms["cOrder"]["blend"].value.toLowerCase();
+			var cExtras = document.forms["cOrder"]["extras"].value.toLowerCase();
+			
+			// validate coffee size
+			if (cSize != "small" && cSize != "medium" && cSize != "large") {
+				alert("Drink size must be small, medium or large.");
+				document.forms["cOrder"]["drinkSize"].focus();
+				return false;
+			} 
+			
+			// validate coffee blend
+			if (cBlend != "light roast" && cBlend != "medium roast" && cBlend != "dark roast") {
+				alert( "Blend must be light roast, medium roast or dark roast.");
+				document.forms["cOrder"]["blend"].focus();
+				return false;
+			}
+			
+			// validate coffee extras
+			if (cExtras != "cream" && cExtras != "sugar" && cExtras != "cream and sugar" && cExtras != "") {
+				alert( "Extras must be either blank, cream, sugar or cream and sugar");
+				document.forms["cOrder"]["extras"].focus();
+				return false;
+			}
+			
+			// if we get here then we validate the form entry
+			return true;
+	}
+</script>
 </head>
 <body>
-	<form th:object="${newCoffeeOrder}" th:action="@{/update/{id}(id=${newCoffeeOrder.id})}" method='POST'>
+	<form name = "cOrder" th:object="${newCoffeeOrder}" th:action="@{/update/{id}(id=${newCoffeeOrder.id})}" th:onsubmit = "return checkForm();" method='POST'>
     Size: <input name="drinkSize" size="35" th:field="*{drinkSize}"> <br />
 	Blend: <input name="blend" size="35" th:field="*{blend}"> <br />
 	Extras: <input name="extras" size="35" th:field="*{extras}"> <br />
